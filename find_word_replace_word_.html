@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find and Replace with String Methods</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <style>
+body {font-family:'Poiret One', cursive;
+letter-spacing: 1px; margin-left: 30px;}
+h1{margin-bottom: 50px;}
+
+input#find{margin-left:30px;}
+input {padding-left: 20px; margin-top: 20px;margin-bottom: 40px; border-radius:25px; width: 165px; height: 30px; box-shadow: 0px;}
+input:focus {
+    outline:none;
+}
+button {width: 120px; height: 40px; border-radius: 25px; margin: 20px 20px; margin-left: 100px; outline: none;}
+p{margin-left: 80px; margin-top: 30px;} 
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Find and Replace with String Methods</h1>
+        <h4>Instruction: In the "Find" input field. Enter the text "homosexuals" or Homosexuals</h4>
+        <h4> In the "Replace" field, enter the following string: "Individuals who self-identify as LGBTQ+"</h4>
+        <h5>Note: The string "Indivduals who self-identify as LGBTQ+" should be wrapped in double quotes when entered into the "Replace" filed</h5>
+    </header>
+    <main>
+        <form action="#" method="post">
+            <div>
+                <label for="find">Find:</label>
+                <input type="text" id="find" />
+            </div>
+            <div>
+                <label for="replace">Replace:</label>
+                <input type="text" id="replace" />
+            </div>
+            <div>
+                <button id="btnSearch">Replace Text</button>
+            </div>
+        </form>
+        <p class="target">
+            Homosexuals in the 80s...<br>
+            homosexuals in the 80s...
+        </p>
+    </main>
+    <script>
+
+        /*
+        The DOMContentLoaded event fires when the initial HTML document has been completely loaded and parsed, 
+        without waiting for stylesheets, images, and subframes to finish loading
+        
+        The EventTarget method addEventListener() sets up a function that will be called whenever the specified event is delivered to the target. 
+        Common targets are Element, Document, and Window,
+        
+        */
+        document.addEventListener('DOMContentLoaded', function(){
+            let btn = document.getElementById('btnSearch');
+            btn.addEventListener('click', doFindAndReplace);
+        });
+        
+        function doFindAndReplace(ev){
+            ev.preventDefault();
+            
+            let find = document.getElementById('find').value;
+            let replace = document.getElementById('replace').value;
+            
+
+            /*
+            querySelector
+
+                The querySelector() method returns the first element that matches a specified CSS selector(s) in the document.
+
+                Note: The querySelector() method only returns the first element that matches the specified selectors. 
+                To return all the matches, use the querySelectorAll() method instead.
+
+            input text value property
+
+                The value property sets or returns the value of the value attribute of a text field.
+
+                The value property contains the default value OR the value a user types in (or a value set by a script).
+
+
+            The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. 
+            The event continues to propagate as usual, unless one of its event listeners calls
+            
+            */
+            let p = document.querySelector('.target');
+            /*
+            
+            textContent
+                A String, representing the text of the node and all its descendants.
+                Returns null if the element is a document, a document type, or a notation.
+            indexOf() method
+                The indexOf() method returns the position of the first occurrence of a specified value in a string.
+                This method returns -1 if the value to search for never occurs
+            replace() method
+                The replace() method searches a string for a specified value, 
+                or a regular expression, and returns a new string where the specified values are replaced.    
+            */
+            while( p.textContent.indexOf(find) != -1 ){
+                p.textContent = p.textContent.replace(find, replace);
+            }   
+        }
+    </script>
+    <!--
+    https://gist.github.com/prof3ssorSt3v3/d822037ff3c49ee4b712f25c4114e194
+    -->
+    <!--
+    Stater Code by: Steve Griffith on YouTube channel, URL: https://www.youtube.com/watch?v=Onb7fKMnSOM
+    Code notes by: Astra Rai Daniels
+    -->
+</body>
+</html>
