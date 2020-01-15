@@ -1,0 +1,15 @@
+{
+"manifest_version": 2,
+    "name": "LGBTQ+ Community Word Replacers",
+    "description": "Free Google Chrome extensions that changes intances of 'homosexuals' to 'individuals who self-identify as LGBTQ+' ",
+    "version": "0.1",
+    "content_scripts": [
+        {
+            "matches": [
+               "<all_urls>"
+            ],
+            "js":
+                ["content.js"] 
+        }
+    ]
+}
